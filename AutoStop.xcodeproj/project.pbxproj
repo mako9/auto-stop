@@ -1,0 +1,564 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		AC68CB3625C1FD040036DE3D /* AutoStop WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = AC68CB3525C1FD040036DE3D /* AutoStop WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC68CB3B25C1FD050036DE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC68CB3A25C1FD050036DE3D /* Assets.xcassets */; };
+		AC68CB4225C1FD050036DE3D /* AutoStop WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = AC68CB4125C1FD050036DE3D /* AutoStop WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		AC68CB4725C1FD050036DE3D /* AutoStopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68CB4625C1FD050036DE3D /* AutoStopApp.swift */; };
+		AC68CB4925C1FD050036DE3D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68CB4825C1FD050036DE3D /* ContentView.swift */; };
+		AC68CB4B25C1FD050036DE3D /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68CB4A25C1FD050036DE3D /* NotificationController.swift */; };
+		AC68CB4D25C1FD050036DE3D /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68CB4C25C1FD050036DE3D /* NotificationView.swift */; };
+		AC68CB4F25C1FD050036DE3D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68CB4E25C1FD050036DE3D /* ComplicationController.swift */; };
+		AC68CB5125C1FD060036DE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC68CB5025C1FD060036DE3D /* Assets.xcassets */; };
+		AC68CB5425C1FD060036DE3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC68CB5325C1FD060036DE3D /* Preview Assets.xcassets */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		AC68CB3725C1FD040036DE3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC68CB2B25C1FD040036DE3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC68CB3425C1FD040036DE3D;
+			remoteInfo = "AutoStop WatchKit App";
+		};
+		AC68CB4325C1FD050036DE3D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AC68CB2B25C1FD040036DE3D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AC68CB4025C1FD050036DE3D;
+			remoteInfo = "AutoStop WatchKit Extension";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		AC68CB5C25C1FD060036DE3D /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				AC68CB4225C1FD050036DE3D /* AutoStop WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC68CB6025C1FD060036DE3D /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				AC68CB3625C1FD040036DE3D /* AutoStop WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		AC68CB3125C1FD040036DE3D /* AutoStop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoStop.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC68CB3525C1FD040036DE3D /* AutoStop WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AutoStop WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC68CB3A25C1FD050036DE3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC68CB3C25C1FD050036DE3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC68CB4125C1FD050036DE3D /* AutoStop WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "AutoStop WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AC68CB4625C1FD050036DE3D /* AutoStopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoStopApp.swift; sourceTree = "<group>"; };
+		AC68CB4825C1FD050036DE3D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AC68CB4A25C1FD050036DE3D /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		AC68CB4C25C1FD050036DE3D /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		AC68CB4E25C1FD050036DE3D /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		AC68CB5025C1FD060036DE3D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		AC68CB5325C1FD060036DE3D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		AC68CB5525C1FD060036DE3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC68CB5625C1FD060036DE3D /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AC68CB3E25C1FD050036DE3D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AC68CB2A25C1FD040036DE3D = {
+			isa = PBXGroup;
+			children = (
+				AC68CB3925C1FD040036DE3D /* AutoStop WatchKit App */,
+				AC68CB4525C1FD050036DE3D /* AutoStop WatchKit Extension */,
+				AC68CB3225C1FD040036DE3D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AC68CB3225C1FD040036DE3D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AC68CB3125C1FD040036DE3D /* AutoStop.app */,
+				AC68CB3525C1FD040036DE3D /* AutoStop WatchKit App.app */,
+				AC68CB4125C1FD050036DE3D /* AutoStop WatchKit Extension.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		AC68CB3925C1FD040036DE3D /* AutoStop WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				AC68CB3A25C1FD050036DE3D /* Assets.xcassets */,
+				AC68CB3C25C1FD050036DE3D /* Info.plist */,
+			);
+			path = "AutoStop WatchKit App";
+			sourceTree = "<group>";
+		};
+		AC68CB4525C1FD050036DE3D /* AutoStop WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				AC68CB4625C1FD050036DE3D /* AutoStopApp.swift */,
+				AC68CB4825C1FD050036DE3D /* ContentView.swift */,
+				AC68CB4A25C1FD050036DE3D /* NotificationController.swift */,
+				AC68CB4C25C1FD050036DE3D /* NotificationView.swift */,
+				AC68CB4E25C1FD050036DE3D /* ComplicationController.swift */,
+				AC68CB5025C1FD060036DE3D /* Assets.xcassets */,
+				AC68CB5525C1FD060036DE3D /* Info.plist */,
+				AC68CB5625C1FD060036DE3D /* PushNotificationPayload.apns */,
+				AC68CB5225C1FD060036DE3D /* Preview Content */,
+			);
+			path = "AutoStop WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		AC68CB5225C1FD060036DE3D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				AC68CB5325C1FD060036DE3D /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AC68CB3025C1FD040036DE3D /* AutoStop */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC68CB6125C1FD060036DE3D /* Build configuration list for PBXNativeTarget "AutoStop" */;
+			buildPhases = (
+				AC68CB2F25C1FD040036DE3D /* Resources */,
+				AC68CB6025C1FD060036DE3D /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC68CB3825C1FD040036DE3D /* PBXTargetDependency */,
+			);
+			name = AutoStop;
+			productName = AutoStop;
+			productReference = AC68CB3125C1FD040036DE3D /* AutoStop.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		AC68CB3425C1FD040036DE3D /* AutoStop WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC68CB5D25C1FD060036DE3D /* Build configuration list for PBXNativeTarget "AutoStop WatchKit App" */;
+			buildPhases = (
+				AC68CB3325C1FD040036DE3D /* Resources */,
+				AC68CB5C25C1FD060036DE3D /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				AC68CB4425C1FD050036DE3D /* PBXTargetDependency */,
+			);
+			name = "AutoStop WatchKit App";
+			productName = "AutoStop WatchKit App";
+			productReference = AC68CB3525C1FD040036DE3D /* AutoStop WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		AC68CB4025C1FD050036DE3D /* AutoStop WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AC68CB5925C1FD060036DE3D /* Build configuration list for PBXNativeTarget "AutoStop WatchKit Extension" */;
+			buildPhases = (
+				AC68CB3D25C1FD050036DE3D /* Sources */,
+				AC68CB3E25C1FD050036DE3D /* Frameworks */,
+				AC68CB3F25C1FD050036DE3D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AutoStop WatchKit Extension";
+			productName = "AutoStop WatchKit Extension";
+			productReference = AC68CB4125C1FD050036DE3D /* AutoStop WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AC68CB2B25C1FD040036DE3D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					AC68CB3025C1FD040036DE3D = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					AC68CB3425C1FD040036DE3D = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					AC68CB4025C1FD050036DE3D = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = AC68CB2E25C1FD040036DE3D /* Build configuration list for PBXProject "AutoStop" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AC68CB2A25C1FD040036DE3D;
+			productRefGroup = AC68CB3225C1FD040036DE3D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AC68CB3025C1FD040036DE3D /* AutoStop */,
+				AC68CB3425C1FD040036DE3D /* AutoStop WatchKit App */,
+				AC68CB4025C1FD050036DE3D /* AutoStop WatchKit Extension */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		AC68CB2F25C1FD040036DE3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC68CB3325C1FD040036DE3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC68CB3B25C1FD050036DE3D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC68CB3F25C1FD050036DE3D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC68CB5425C1FD060036DE3D /* Preview Assets.xcassets in Resources */,
+				AC68CB5125C1FD060036DE3D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AC68CB3D25C1FD050036DE3D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AC68CB4B25C1FD050036DE3D /* NotificationController.swift in Sources */,
+				AC68CB4925C1FD050036DE3D /* ContentView.swift in Sources */,
+				AC68CB4F25C1FD050036DE3D /* ComplicationController.swift in Sources */,
+				AC68CB4725C1FD050036DE3D /* AutoStopApp.swift in Sources */,
+				AC68CB4D25C1FD050036DE3D /* NotificationView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		AC68CB3825C1FD040036DE3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC68CB3425C1FD040036DE3D /* AutoStop WatchKit App */;
+			targetProxy = AC68CB3725C1FD040036DE3D /* PBXContainerItemProxy */;
+		};
+		AC68CB4425C1FD050036DE3D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AC68CB4025C1FD050036DE3D /* AutoStop WatchKit Extension */;
+			targetProxy = AC68CB4325C1FD050036DE3D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		AC68CB5725C1FD060036DE3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AC68CB5825C1FD060036DE3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		AC68CB5A25C1FD060036DE3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"AutoStop WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "AutoStop WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		AC68CB5B25C1FD060036DE3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"AutoStop WatchKit Extension/Preview Content\"";
+				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "AutoStop WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop.watchkitapp.watchkitextension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
+		AC68CB5E25C1FD060036DE3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				IBSC_MODULE = AutoStop_WatchKit_Extension;
+				INFOPLIST_FILE = "AutoStop WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Debug;
+		};
+		AC68CB5F25C1FD060036DE3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				IBSC_MODULE = AutoStop_WatchKit_Extension;
+				INFOPLIST_FILE = "AutoStop WatchKit App/Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+			};
+			name = Release;
+		};
+		AC68CB6225C1FD060036DE3D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AC68CB6325C1FD060036DE3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AC68CB2E25C1FD040036DE3D /* Build configuration list for PBXProject "AutoStop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC68CB5725C1FD060036DE3D /* Debug */,
+				AC68CB5825C1FD060036DE3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC68CB5925C1FD060036DE3D /* Build configuration list for PBXNativeTarget "AutoStop WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC68CB5A25C1FD060036DE3D /* Debug */,
+				AC68CB5B25C1FD060036DE3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC68CB5D25C1FD060036DE3D /* Build configuration list for PBXNativeTarget "AutoStop WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC68CB5E25C1FD060036DE3D /* Debug */,
+				AC68CB5F25C1FD060036DE3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AC68CB6125C1FD060036DE3D /* Build configuration list for PBXNativeTarget "AutoStop" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AC68CB6225C1FD060036DE3D /* Debug */,
+				AC68CB6325C1FD060036DE3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AC68CB2B25C1FD040036DE3D /* Project object */;
+}
