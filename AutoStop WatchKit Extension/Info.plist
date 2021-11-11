@@ -27,12 +27,14 @@
 		<key>NSExtensionAttributes</key>
 		<dict>
 			<key>WKAppBundleIdentifier</key>
-			<string>de.edag.AutoStop.watchkitapp</string>
+			<string>de.edag.autostop.watchkitapp</string>
 		</dict>
 		<key>NSExtensionPointIdentifier</key>
 		<string>com.apple.watchkit</string>
 	</dict>
 	<key>WKWatchOnly</key>
 	<true/>
+	<key>NSHealthShareUsageDescription</key>
+	<string>We need your sleep data.</string>
 </dict>
 </plist>

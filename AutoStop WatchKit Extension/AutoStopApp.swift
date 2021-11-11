@@ -12,7 +12,7 @@ struct AutoStopApp: App {
     @SceneBuilder var body: some Scene {
         WindowGroup {
             NavigationView {
-                ContentView()
+                ContentView().environmentObject(ContentViewModel())
             }
         }
 

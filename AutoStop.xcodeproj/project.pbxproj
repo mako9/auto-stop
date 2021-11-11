@@ -17,6 +17,11 @@
 		AC68CB4F25C1FD050036DE3D /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC68CB4E25C1FD050036DE3D /* ComplicationController.swift */; };
 		AC68CB5125C1FD060036DE3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC68CB5025C1FD060036DE3D /* Assets.xcassets */; };
 		AC68CB5425C1FD060036DE3D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC68CB5325C1FD060036DE3D /* Preview Assets.xcassets */; };
+		AC7A75FD273DAB7B00793C0E /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A75FC273DAB7B00793C0E /* AudioManager.swift */; };
+		AC7A75FF273DADA900793C0E /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A75FE273DADA900793C0E /* ContentViewModel.swift */; };
+		AC7A7601273DAEDF00793C0E /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC7A7600273DAEDF00793C0E /* Logger.swift */; };
+		AC7A7605273DB30600793C0E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC7A7604273DB30600793C0E /* HealthKit.framework */; };
+		AC88EF3C273BF7EF0011427C /* HeathKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC88EF3B273BF7EF0011427C /* HeathKitManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +81,12 @@
 		AC68CB5325C1FD060036DE3D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		AC68CB5525C1FD060036DE3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC68CB5625C1FD060036DE3D /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		AC7A75FC273DAB7B00793C0E /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
+		AC7A75FE273DADA900793C0E /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
+		AC7A7600273DAEDF00793C0E /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		AC7A7602273DB30600793C0E /* AutoStop WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "AutoStop WatchKit Extension.entitlements"; sourceTree = "<group>"; };
+		AC7A7604273DB30600793C0E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.0.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		AC88EF3B273BF7EF0011427C /* HeathKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeathKitManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +94,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC7A7605273DB30600793C0E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +107,7 @@
 				AC68CB3925C1FD040036DE3D /* AutoStop WatchKit App */,
 				AC68CB4525C1FD050036DE3D /* AutoStop WatchKit Extension */,
 				AC68CB3225C1FD040036DE3D /* Products */,
+				AC7A7603273DB30600793C0E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,10 +133,15 @@
 		AC68CB4525C1FD050036DE3D /* AutoStop WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				AC7A7602273DB30600793C0E /* AutoStop WatchKit Extension.entitlements */,
 				AC68CB4625C1FD050036DE3D /* AutoStopApp.swift */,
 				AC68CB4825C1FD050036DE3D /* ContentView.swift */,
 				AC68CB4A25C1FD050036DE3D /* NotificationController.swift */,
+				AC7A75FE273DADA900793C0E /* ContentViewModel.swift */,
 				AC68CB4C25C1FD050036DE3D /* NotificationView.swift */,
+				AC88EF3B273BF7EF0011427C /* HeathKitManager.swift */,
+				AC7A7600273DAEDF00793C0E /* Logger.swift */,
+				AC7A75FC273DAB7B00793C0E /* AudioManager.swift */,
 				AC68CB4E25C1FD050036DE3D /* ComplicationController.swift */,
 				AC68CB5025C1FD060036DE3D /* Assets.xcassets */,
 				AC68CB5525C1FD060036DE3D /* Info.plist */,
@@ -139,6 +157,14 @@
 				AC68CB5325C1FD060036DE3D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		AC7A7603273DB30600793C0E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AC7A7604273DB30600793C0E /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,7 +293,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC7A75FF273DADA900793C0E /* ContentViewModel.swift in Sources */,
 				AC68CB4B25C1FD050036DE3D /* NotificationController.swift in Sources */,
+				AC7A75FD273DAB7B00793C0E /* AudioManager.swift in Sources */,
+				AC88EF3C273BF7EF0011427C /* HeathKitManager.swift in Sources */,
+				AC7A7601273DAEDF00793C0E /* Logger.swift in Sources */,
 				AC68CB4925C1FD050036DE3D /* ContentView.swift in Sources */,
 				AC68CB4F25C1FD050036DE3D /* ComplicationController.swift in Sources */,
 				AC68CB4725C1FD050036DE3D /* AutoStopApp.swift in Sources */,
@@ -409,9 +439,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "AutoStop WatchKit Extension/AutoStop WatchKit Extension.entitlements";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"AutoStop WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "AutoStop WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -419,8 +450,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.autostop.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -433,9 +465,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "AutoStop WatchKit Extension/AutoStop WatchKit Extension.entitlements";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_ASSET_PATHS = "\"AutoStop WatchKit Extension/Preview Content\"";
-				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "AutoStop WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -443,8 +476,9 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.autostop.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -459,12 +493,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = AutoStop_WatchKit_Extension;
 				INFOPLIST_FILE = "AutoStop WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.autostop.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -479,12 +514,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				IBSC_MODULE = AutoStop_WatchKit_Extension;
 				INFOPLIST_FILE = "AutoStop WatchKit App/Info.plist";
-				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.autostop.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -496,12 +532,14 @@
 		AC68CB6225C1FD060036DE3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop;
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.autostop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Autostop Development";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -509,12 +547,14 @@
 		AC68CB6325C1FD060036DE3D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 7J2NLWJ2Z6;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = de.edag.AutoStop;
+				PRODUCT_BUNDLE_IDENTIFIER = de.edag.autostop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "Autostop Development";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
