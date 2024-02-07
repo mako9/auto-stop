@@ -13,7 +13,7 @@ class ContentViewModel: ObservableObject {
 
     @Published var stopDateString: String?
     @Published var stoppedAudio: Bool = false
-    @Published var isRunning: Bool = false
+    @Published var timerStarted: Bool = false
 
     init() {
         dateFormatter = DateFormatter()
@@ -27,7 +27,7 @@ class ContentViewModel: ObservableObject {
     func startTimer() {
         watchSyncService.sendMessage(.watchOSTimerStarted, "Timer started") { error in
             guard let error = error else {
-                self.isRunning = true
+                self.timerStarted = true
                 return
             }
             Logger.shared.error("Watch: Could not start logger: \(error.localizedDescription)")
@@ -37,7 +37,7 @@ class ContentViewModel: ObservableObject {
     func stopTimer() {
         watchSyncService.sendMessage(.watchOSTimerStopped, "Timer stopped") { error in
             guard let error = error else {
-                self.isRunning = false
+                self.timerStarted = false
                 return
             }
             Logger.shared.error("Watch: Could not stop logger: \(error.localizedDescription)")
