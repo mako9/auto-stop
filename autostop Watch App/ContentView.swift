@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
                 HStack(spacing: 8.0) {
-                    SleepingQuokkaView(isAnimating: viewModel.timerStarted)
+                    SleepingQuokkaView(isAnimating: $viewModel.timerStarted)
                     VStack {
                         Text("content-view_last-detection-at")
                             .bold()

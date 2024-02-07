@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SleepingQuokkaView: View {
-    var isAnimating = false
+    @Binding var isAnimating: Bool
     
     var body: some View {
         if isAnimating {

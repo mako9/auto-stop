@@ -11,6 +11,7 @@ import HealthKit
 class HealthKitManager {
     private let healthStore = HKHealthStore()
     private let sleepType = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
+    private var startDate: Date?
 
     func isSleeping(completion: @escaping (Bool) -> Void) {
         guard isAuthorized() else {
@@ -36,11 +37,14 @@ class HealthKitManager {
     }
 
     private func retrieveSleepAnalysis(completion: @escaping (Bool) -> Void) {
-        // Use a sortDescriptor to get the recent data first
+        // only consider values with start date after initial start
+        if self.startDate == nil { self.startDate = Date() }
+        let predicate = HKQuery.predicateForSamples(withStart: self.startDate ?? Date(), end: nil, options: .strictStartDate)
+        // use a sortDescriptor to get the recent data first
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
         // we create our query with a block completion to execute
-        let query = HKSampleQuery(sampleType: sleepType, predicate: nil, limit: 30, sortDescriptors: [sortDescriptor]) { (query, tmpResult, error) -> Void in
+        let query = HKSampleQuery(sampleType: sleepType, predicate: predicate, limit: 30, sortDescriptors: [sortDescriptor]) { (query, tmpResult, error) -> Void in
             
             if let error = error {
                 Logger.shared.error("Error during sleep analysis retrieval: \(error)")
@@ -63,7 +67,7 @@ class HealthKitManager {
                     let value = sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue ? "InBed" : "Asleep"
                     Logger.shared.info("Healthkit sleep: \(sample.startDate) \(sample.endDate) - value: \(value)")
                     isSleeping = sample.value != HKCategoryValueSleepAnalysis.inBed.rawValue || sample.value != HKCategoryValueSleepAnalysis.awake.rawValue
-                    break
+                    if isSleeping { break }
                 }
             }
             Logger.shared.debug("User is sleeping: \(isSleeping)")

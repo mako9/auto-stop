@@ -20,13 +20,13 @@ class WatchSyncService : NSObject, WCSessionDelegate {
         self.session.delegate = self
         self.connect()
     }
-    
+
     func connect(){
         guard WCSession.isSupported() else {
             Logger.shared.warn("WCSession is not supported")
             return
         }
-        
+
         session.activate()
     }
 
@@ -38,9 +38,13 @@ class WatchSyncService : NSObject, WCSessionDelegate {
     }
 
     #if os(iOS)
-    func sessionDidBecomeInactive(_ session: WCSession) { }
+    func sessionDidBecomeInactive(_ session: WCSession) {
+        Logger.shared.verbose("sessionDidBecomeInactive")
+    }
 
-    func sessionDidDeactivate(_ session: WCSession) { }
+    func sessionDidDeactivate(_ session: WCSession) {
+        Logger.shared.verbose("sessionDidDeactivate")
+    }
     #endif
 
     func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
@@ -48,35 +52,26 @@ class WatchSyncService : NSObject, WCSessionDelegate {
             Logger.shared.warn("Received data, but 'dataReceived' handler is not provided")
             return
         }
-        
+
         DispatchQueue.main.async {
             if let dataReceived = self.dataReceived {
                 for pair in message {
-                    dataReceived(WatchSyncKey(rawValue: pair.key)!, pair.value)
-                }
-            }
-        }
-    }
-    
-    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
-        guard dataReceived != nil else {
-            Logger.shared.warn("Received data, but 'dataReceived' handler is not provided")
-            return
-        }
-        
-        DispatchQueue.main.async {
-            if let dataReceived = self.dataReceived {
-                for pair in message {
-                    dataReceived(WatchSyncKey(rawValue: pair.key)!, pair.value)
+                    guard let watchSyncKey = WatchSyncKey(rawValue: pair.key) else {
+                        Logger.shared.warn("Invalid WatchSyncKey sent: \(pair.key)")
+                        continue
+                    }
+                    Logger.shared.debug("Received message: KEY: [\(watchSyncKey.rawValue)] - MESSAGE: [\(pair.value)]")
+                    dataReceived(watchSyncKey, pair.value)
                 }
             }
         }
     }
 
-    func sendMessage(_ key: WatchSyncKey, _ data: Any, _ errorHandler: ((Error?) -> Void)?) {
+    func sendMessage(_ key: WatchSyncKey, _ data: Any, _ errorHandler: ((Error?) -> Void)? = nil) {
+        Logger.shared.debug("Send message: KEY: [\(key.rawValue)] - MESSAGE: [\(data)]")
         if session.isReachable {
             session.sendMessage([key.rawValue : data], replyHandler: nil) { (error) in
-                Logger.shared.error(error.localizedDescription)
+                Logger.shared.error("Could not send message for key [\(key.rawValue)]: \(error.localizedDescription)")
                 if let errorHandler = errorHandler {
                     errorHandler(error)
                 }
