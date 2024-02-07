@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  autostop Watch App
+//  autostop
 //
 //  Created by Mario Kohlhoff on 19.01.24.
 //
@@ -12,30 +12,44 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-                HStack(spacing: 8.0) {
-                    SleepingQuokkaView(isAnimating: viewModel.timerStarted)
-                    VStack {
-                        Text("content-view_last-detection-at")
-                            .bold()
-                        Text(viewModel.stopDateString ?? "-")
-                            .bold()
-                    }
-                    .frame(minWidth: 120)
-            }
+            Text("content-view_title")
+                .font(.title)
+                .bold()
+                .padding(.bottom)
+           
+            Spacer()
+            
+            SleepingQuokkaView(isAnimating: viewModel.timerStarted)
+                .padding(.horizontal, 60.0)
+                .frame(maxHeight: 240)
+            
+            Text("content-view_detecting-sleep")
+                .padding(.top, 20.0)
+                .frame(alignment: .top)
+                .opacity(viewModel.timerStarted ? 1 : 0)
             
             Spacer()
             
+            VStack {
+                Text("content-view_last-detection-at")
+                    .bold()
+                Text(viewModel.stopDateString ?? "-")
+                    .bold()
+            }
+            .padding(.bottom)
+
+
             Button(viewModel.timerStarted ? "content-view_button-title-stop" : "content-view_button-title-start") {
                 viewModel.timerStarted ? viewModel.stopTimer() : viewModel.startTimer()
             }
             .frame(maxWidth: .infinity, minHeight: 50)
             .background(Color.primary)
+            .foregroundColor(Color("WhiteTextColor", bundle: nil))
             .cornerRadius(3.0)
-            .foregroundColor(Color.black)
-            .padding(.top, 4.0)
+            .shadow(radius: 3.0, y: 5.0)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(4.0)
+        .padding()
     }
 }
 

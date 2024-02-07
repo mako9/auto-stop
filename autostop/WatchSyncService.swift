@@ -23,14 +23,19 @@ class WatchSyncService : NSObject, WCSessionDelegate {
     
     func connect(){
         guard WCSession.isSupported() else {
-            print("WCSession is not supported")
+            Logger.shared.warn("WCSession is not supported")
             return
         }
         
         session.activate()
     }
 
-    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) { }
+    func session(_ session: WCSession, activationDidCompleteWith activationState: WCSessionActivationState, error: Error?) { 
+        Logger.shared.debug("activationDidCompleteWith: \(activationState.rawValue)")
+        if let error = error {
+            Logger.shared.error("activationDidCompleteWith: \(error.localizedDescription)")
+        }
+    }
 
     #if os(iOS)
     func sessionDidBecomeInactive(_ session: WCSession) { }
@@ -38,16 +43,31 @@ class WatchSyncService : NSObject, WCSessionDelegate {
     func sessionDidDeactivate(_ session: WCSession) { }
     #endif
 
-    private func session(_ session: WCSession, didReceiveMessage message: [WatchSyncKey : Any]) {
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any]) {
         guard dataReceived != nil else {
-            print("Received data, but 'dataReceived' handler is not provided")
+            Logger.shared.warn("Received data, but 'dataReceived' handler is not provided")
             return
         }
         
         DispatchQueue.main.async {
             if let dataReceived = self.dataReceived {
                 for pair in message {
-                    dataReceived(pair.key, pair.value)
+                    dataReceived(WatchSyncKey(rawValue: pair.key)!, pair.value)
+                }
+            }
+        }
+    }
+    
+    func session(_ session: WCSession, didReceiveMessage message: [String : Any], replyHandler: @escaping ([String : Any]) -> Void) {
+        guard dataReceived != nil else {
+            Logger.shared.warn("Received data, but 'dataReceived' handler is not provided")
+            return
+        }
+        
+        DispatchQueue.main.async {
+            if let dataReceived = self.dataReceived {
+                for pair in message {
+                    dataReceived(WatchSyncKey(rawValue: pair.key)!, pair.value)
                 }
             }
         }
@@ -55,12 +75,8 @@ class WatchSyncService : NSObject, WCSessionDelegate {
 
     func sendMessage(_ key: WatchSyncKey, _ data: Any, _ errorHandler: ((Error?) -> Void)?) {
         if session.isReachable {
-            session.sendMessage([key.rawValue : data], replyHandler: { _ in
-                if let errorHandler = errorHandler {
-                    errorHandler(nil)
-                }
-            }) { (error) in
-                print(error.localizedDescription)
+            session.sendMessage([key.rawValue : data], replyHandler: nil) { (error) in
+                Logger.shared.error(error.localizedDescription)
                 if let errorHandler = errorHandler {
                     errorHandler(error)
                 }
