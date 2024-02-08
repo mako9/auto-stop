@@ -15,7 +15,6 @@ class ContentViewModel: ObservableObject {
     private let dateFormatter: DateFormatter
 
     @Published var stopDateString: String?
-    @Published var stoppedAudio: Bool = false
     @Published var timerStarted: Bool = false
     @Published var isRunning: Bool = false
 
@@ -23,7 +22,7 @@ class ContentViewModel: ObservableObject {
 
     init() {
         dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy HH:mm:ss.SSSS"
+        dateFormatter.dateFormat = "dd.MM.yy HH:mm"
         
         watchSyncService.dataReceived = { (key, message) in
             switch key {
@@ -42,6 +41,7 @@ class ContentViewModel: ObservableObject {
             self.checkSleep()
         })
         timerStarted = true
+        watchSyncService.sendMessage(.iOSTimerStarted, "Timer started")
     }
 
     func stopTimer() {
@@ -50,13 +50,18 @@ class ContentViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.timerStarted = false
         }
+        self.watchSyncService.sendMessage(.iOSTimerStopped, "Timer stopped")
     }
 
     private func checkSleep() {
+        if isRunning {
+            Logger.shared.debug("Sleep check already running")
+            return
+        }
         DispatchQueue.main.async {
             self.isRunning = true
         }
-        healthKitManager.isSleeping { shouldStop in
+        healthKitManager.isSleeping { [self] shouldStop in
             DispatchQueue.main.async {
                 self.isRunning = false
             }
@@ -64,11 +69,12 @@ class ContentViewModel: ObservableObject {
                 return
             }
             if self.audioManager.stopAudio() {
-                self.stoppedAudio = true
-            }
-            self.stopTimer()
-            DispatchQueue.main.async {
-                self.stopDateString = self.dateFormatter.string(from: Date())
+                self.stopTimer()
+                let dateString = self.dateFormatter.string(from: Date())
+                DispatchQueue.main.async {
+                    self.stopDateString = dateString
+                }
+                self.watchSyncService.sendMessage(.iOSSleepDetected, dateString)
             }
         }
     }

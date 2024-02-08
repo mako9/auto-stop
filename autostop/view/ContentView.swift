@@ -19,7 +19,7 @@ struct ContentView: View {
            
             Spacer()
             
-            SleepingQuokkaView(isAnimating: viewModel.timerStarted)
+            SleepingQuokkaView(isAnimating: $viewModel.timerStarted)
                 .padding(.horizontal, 60.0)
                 .frame(maxHeight: 240)
             

@@ -9,39 +9,38 @@ import Foundation
 
 class ContentViewModel: ObservableObject {
     private let watchSyncService = WatchSyncService()
-    private let dateFormatter: DateFormatter
 
     @Published var stopDateString: String?
-    @Published var stoppedAudio: Bool = false
-    @Published var timerStarted: Bool = false
+    @Published var timerStarted: Bool = false {
+        didSet {
+            print(timerStarted)
+        }
+    }
 
     init() {
-        dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yy HH:mm:ss.SSSS"
-
         watchSyncService.dataReceived = { (key, message) in
-            
+            DispatchQueue.main.async {
+                switch key {
+                case .iOSTimerStarted:
+                    self.timerStarted = true
+                case .iOSTimerStopped:
+                    self.timerStarted = false
+                case .iOSSleepDetected:
+                    self.timerStarted = false
+                    self.stopDateString = message as? String
+                default:
+                    Logger.shared.verbose("Irrelevant key: \(key.rawValue)")
+                }
+            }
         }
     }
 
     func startTimer() {
-        watchSyncService.sendMessage(.watchOSTimerStarted, "Timer started") { error in
-            guard let error = error else {
-                self.timerStarted = true
-                return
-            }
-            Logger.shared.error("Watch: Could not start logger: \(error.localizedDescription)")
-        }
+        watchSyncService.sendMessage(.watchOSTimerStarted, "Timer started")
     }
 
     func stopTimer() {
-        watchSyncService.sendMessage(.watchOSTimerStopped, "Timer stopped") { error in
-            guard let error = error else {
-                self.timerStarted = false
-                return
-            }
-            Logger.shared.error("Watch: Could not stop logger: \(error.localizedDescription)")
-        }
+        watchSyncService.sendMessage(.watchOSTimerStopped, "Timer stopped")
     }
 }
 
