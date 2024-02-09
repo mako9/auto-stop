@@ -52,6 +52,23 @@
         }
       }
     },
+    "content-view_iPhone-not-reachable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone nicht erreichbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "iPhone not reachable"
+          }
+        }
+      }
+    },
     "content-view_last-detection-at" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -69,6 +86,23 @@
         }
       }
     },
+    "content-view_missing-connection-description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für eine erfolgreiche Funktionalität dieser Applikation muss eine erreichbare Verbindung zwischen iPhone und Apple Watch existieren. Bitte prüfe, ob iPhone und Apple Watch korrekt verbunden sind."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A reachable connection between iPhone and Apple Watch must exist to make this application working. Please check if iPhone and Apple Watch are correctly connected."
+          }
+        }
+      }
+    },
     "content-view_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -82,6 +116,43 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sleep detection"
+          }
+        }
+      }
+    },
+    "content-view_watch-not-reachable" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch nicht erreichbar"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Watch not reachable"
+          }
+        }
+      }
+    },
+    "ok" : {
+
+    },
+    "OK" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
           }
         }
       }

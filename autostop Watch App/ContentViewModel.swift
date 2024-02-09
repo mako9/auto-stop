@@ -7,21 +7,25 @@
 
 import Foundation
 
-class ContentViewModel: ObservableObject {
-    private let watchSyncService = WatchSyncService()
+class ContentViewModel: NSObject, ObservableObject, WatchSyncServiceDelegate {
+    private var watchSyncService: WatchSyncService?
     private let healthKitManager = HealthKitManager()
     private var checkTimer: Timer?
     private var isRunning: Bool = false
     private let dateFormatter: DateFormatter
 
+    @Published var isConnectionAvailable: Bool = false
     @Published var stopDateString: String?
     @Published var timerStarted: Bool = false
 
-    init() {
+    override init() {
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yy HH:mm"
+
+        super.init()
         
-        watchSyncService.dataReceived = { (key, message) in
+        watchSyncService = WatchSyncService(delegate: self)
+        watchSyncService?.dataReceived = { (key, message) in
             switch key {
             case .iOSTimerStarted:
                 self.startTimer()
@@ -38,7 +42,7 @@ class ContentViewModel: ObservableObject {
             self.checkSleep()
         })
         timerStarted = true
-        watchSyncService.sendMessage(.watchOSTimerStarted, "Timer started")
+        watchSyncService?.sendMessage(.watchOSTimerStarted, "Timer started")
     }
 
     func stopTimer() {
@@ -47,7 +51,7 @@ class ContentViewModel: ObservableObject {
         DispatchQueue.main.async {
             self.timerStarted = false
         }
-        self.watchSyncService.sendMessage(.watchOSTimerStopped, "Timer stopped")
+        self.watchSyncService?.sendMessage(.watchOSTimerStopped, "Timer stopped")
     }
 
     private func checkSleep() {
@@ -66,7 +70,13 @@ class ContentViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.stopDateString = dateString
             }
-            self.watchSyncService.sendMessage(.watchOSSleepDetected, dateString)
+            self.watchSyncService?.sendMessage(.watchOSSleepDetected, dateString)
+        }
+    }
+    
+    func connectionAvailable(_ isAvailable: Bool) {
+        DispatchQueue.main.async {
+            self.isConnectionAvailable = isAvailable
         }
     }
 }
