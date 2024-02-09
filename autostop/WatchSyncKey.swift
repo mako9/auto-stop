@@ -10,7 +10,7 @@ import Foundation
 enum WatchSyncKey: String {
     case iOSTimerStarted
     case iOSTimerStopped
-    case iOSSleepDetected
+    case watchOSSleepDetected
     case watchOSTimerStarted
     case watchOSTimerStopped
 }

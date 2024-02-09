@@ -24,7 +24,6 @@
 		AC0DF4892B5AA713007A284C /* autostop_Watch_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DF4882B5AA713007A284C /* autostop_Watch_AppUITestsLaunchTests.swift */; };
 		AC0DF4A22B5AA7D1007A284C /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DF4A12B5AA7D1007A284C /* AudioManager.swift */; };
 		AC0DF4A42B5AA95C007A284C /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DF4A32B5AA95C007A284C /* WatchSyncService.swift */; };
-		AC0DF4A62B5AAB7B007A284C /* HeathKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DF4A52B5AAB7B007A284C /* HeathKitManager.swift */; };
 		AC0DF4A72B5AAB84007A284C /* WatchSyncService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DF4A32B5AA95C007A284C /* WatchSyncService.swift */; };
 		AC0DF4A82B5AABC2007A284C /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DF49F2B5AA7A4007A284C /* ContentViewModel.swift */; };
 		AC0DF4AA2B5AACF8007A284C /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DF4A92B5AACF7007A284C /* Logger.swift */; };
@@ -36,6 +35,7 @@
 		AC2DECB82B737E1500A1E75F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = AC2DECB62B737E1500A1E75F /* Localizable.xcstrings */; };
 		AC2DECBB2B73858800A1E75F /* SleepingQuokkaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2DECBA2B73858800A1E75F /* SleepingQuokkaView.swift */; };
 		AC2DECBC2B73858800A1E75F /* SleepingQuokkaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC2DECBA2B73858800A1E75F /* SleepingQuokkaView.swift */; };
+		AC85E6FB2B74DEBD0006B2B8 /* HeathKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC0DF4A52B5AAB7B007A284C /* HeathKitManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,9 +118,9 @@
 		AC0DF4A92B5AACF7007A284C /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		AC0DF4AC2B5AAD33007A284C /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		AC0DF4AE2B5AAFD0007A284C /* WatchSyncKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchSyncKey.swift; sourceTree = "<group>"; };
-		AC0DF4B12B5ABB8F007A284C /* autostop.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = autostop.entitlements; sourceTree = "<group>"; };
 		AC2DECB62B737E1500A1E75F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		AC2DECBA2B73858800A1E75F /* SleepingQuokkaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepingQuokkaView.swift; sourceTree = "<group>"; };
+		AC85E6FC2B74DFDF0006B2B8 /* autostop Watch App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "autostop Watch App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,8 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				AC2DECB92B73856000A1E75F /* view */,
-				AC0DF4B12B5ABB8F007A284C /* autostop.entitlements */,
-				AC0DF4A52B5AAB7B007A284C /* HeathKitManager.swift */,
 				AC0DF4432B5AA707007A284C /* autostopApp.swift */,
 				AC0DF49F2B5AA7A4007A284C /* ContentViewModel.swift */,
 				AC0DF4A12B5AA7D1007A284C /* AudioManager.swift */,
@@ -242,7 +240,9 @@
 		AC0DF46A2B5AA712007A284C /* autostop Watch App */ = {
 			isa = PBXGroup;
 			children = (
+				AC85E6FC2B74DFDF0006B2B8 /* autostop Watch App.entitlements */,
 				AC0DF46B2B5AA712007A284C /* autostopApp.swift */,
+				AC0DF4A52B5AAB7B007A284C /* HeathKitManager.swift */,
 				AC0DF46D2B5AA712007A284C /* ContentView.swift */,
 				AC0DF46F2B5AA713007A284C /* Assets.xcassets */,
 				AC0DF4712B5AA713007A284C /* Preview Content */,
@@ -510,7 +510,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC0DF4A62B5AAB7B007A284C /* HeathKitManager.swift in Sources */,
 				AC0DF4A22B5AA7D1007A284C /* AudioManager.swift in Sources */,
 				AC0DF4AF2B5AAFD0007A284C /* WatchSyncKey.swift in Sources */,
 				AC0DF4A82B5AABC2007A284C /* ContentViewModel.swift in Sources */,
@@ -548,6 +547,7 @@
 				AC0DF46C2B5AA712007A284C /* autostopApp.swift in Sources */,
 				AC0DF4B02B5AAFD0007A284C /* WatchSyncKey.swift in Sources */,
 				AC0DF4A72B5AAB84007A284C /* WatchSyncService.swift in Sources */,
+				AC85E6FB2B74DEBD0006B2B8 /* HeathKitManager.swift in Sources */,
 				AC0DF4AB2B5AACF8007A284C /* Logger.swift in Sources */,
 				AC0DF4AD2B5AAD33007A284C /* ContentViewModel.swift in Sources */,
 			);
@@ -724,6 +724,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "autostop Watch App/autostop Watch App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -733,6 +734,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = autostop;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your health data is needed to detect when you fall asleep.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.edag.autostop;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -758,6 +760,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "autostop Watch App/autostop Watch App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -767,6 +770,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = autostop;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Your health data is needed to detect when you fall asleep.";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = de.edag.autostop;
 				LD_RUNPATH_SEARCH_PATHS = (

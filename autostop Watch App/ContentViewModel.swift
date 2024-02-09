@@ -9,38 +9,65 @@ import Foundation
 
 class ContentViewModel: ObservableObject {
     private let watchSyncService = WatchSyncService()
+    private let healthKitManager = HealthKitManager()
+    private var checkTimer: Timer?
+    private var isRunning: Bool = false
+    private let dateFormatter: DateFormatter
 
     @Published var stopDateString: String?
-    @Published var timerStarted: Bool = false {
-        didSet {
-            print(timerStarted)
-        }
-    }
+    @Published var timerStarted: Bool = false
 
     init() {
+        dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yy HH:mm"
+        
         watchSyncService.dataReceived = { (key, message) in
-            DispatchQueue.main.async {
-                switch key {
-                case .iOSTimerStarted:
-                    self.timerStarted = true
-                case .iOSTimerStopped:
-                    self.timerStarted = false
-                case .iOSSleepDetected:
-                    self.timerStarted = false
-                    self.stopDateString = message as? String
-                default:
-                    Logger.shared.verbose("Irrelevant key: \(key.rawValue)")
-                }
+            switch key {
+            case .iOSTimerStarted:
+                self.startTimer()
+            case .iOSTimerStopped:
+                self.stopTimer()
+            default:
+                Logger.shared.verbose("Irrelevant key: \(key.rawValue)")
             }
         }
     }
-
+    
     func startTimer() {
+        checkTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true, block: { _ in
+            self.checkSleep()
+        })
+        timerStarted = true
         watchSyncService.sendMessage(.watchOSTimerStarted, "Timer started")
     }
 
     func stopTimer() {
-        watchSyncService.sendMessage(.watchOSTimerStopped, "Timer stopped")
+        checkTimer?.invalidate()
+        checkTimer = nil
+        DispatchQueue.main.async {
+            self.timerStarted = false
+        }
+        self.watchSyncService.sendMessage(.watchOSTimerStopped, "Timer stopped")
+    }
+
+    private func checkSleep() {
+        if isRunning {
+            Logger.shared.debug("Sleep check already running")
+            return
+        }
+        isRunning = true
+        healthKitManager.isSleeping { [self] shouldStop in
+            self.isRunning = false
+            guard shouldStop else {
+                return
+            }
+            self.stopTimer()
+            let dateString = self.dateFormatter.string(from: Date())
+            DispatchQueue.main.async {
+                self.stopDateString = dateString
+            }
+            self.watchSyncService.sendMessage(.watchOSSleepDetected, dateString)
+        }
     }
 }
 

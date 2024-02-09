@@ -33,7 +33,14 @@ class HealthKitManager {
     }
 
     private func requestAuthorization(completion: @escaping (Bool, Error?) -> Void) {
-        healthStore.requestAuthorization(toShare: nil, read: [sleepType], completion: completion)
+        healthStore.requestAuthorization(toShare: nil, read: [sleepType]) { (isAuthorized, error) in
+            if let error = error { Logger.shared.error("Error during HealthKit authorization: \(error)")}
+            guard isAuthorized else {
+                completion(isAuthorized, error)
+                return
+            }
+            self.healthStore.enableBackgroundDelivery(for: self.sleepType, frequency: HKUpdateFrequency(rawValue: 10)!, withCompletion: completion)
+        }
     }
 
     private func retrieveSleepAnalysis(completion: @escaping (Bool) -> Void) {
@@ -61,11 +68,8 @@ class HealthKitManager {
                 
             var isSleeping = false
             for item in result {
-                Logger.shared.debug(item)
                 if let sample = item as? HKCategorySample {
-                    Logger.shared.debug(sample.value)
-                    let value = sample.value == HKCategoryValueSleepAnalysis.inBed.rawValue ? "InBed" : "Asleep"
-                    Logger.shared.info("Healthkit sleep: \(sample.startDate) \(sample.endDate) - value: \(value)")
+                    Logger.shared.info("Healthkit sleep: \(sample.startDate) \(sample.endDate) - value: \(sample.value)")
                     isSleeping = sample.value != HKCategoryValueSleepAnalysis.inBed.rawValue || sample.value != HKCategoryValueSleepAnalysis.awake.rawValue
                     if isSleeping { break }
                 }
