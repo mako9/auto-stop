@@ -8,15 +8,18 @@
 import Foundation
 import SwiftUI
 
-class ContentViewModel: ObservableObject {
+class ContentViewModel: NSObject, ObservableObject, WatchSyncServiceDelegate {
     private let audioManager = AudioManager()
-    private let watchSyncService = WatchSyncService()
+    private var watchSyncService: WatchSyncService?
 
+    @Published var isConnectionAvailable: Bool = false
     @Published var stopDateString: String?
     @Published var timerStarted: Bool = false
 
-    init() {
-        watchSyncService.dataReceived = { (key, message) in
+    override init() {
+        super.init()
+        watchSyncService = WatchSyncService(delegate: self)
+        watchSyncService?.dataReceived = { (key, message) in
             DispatchQueue.main.async {
                 switch key {
                 case .watchOSTimerStarted:
@@ -35,15 +38,21 @@ class ContentViewModel: ObservableObject {
     }
 
     func startTimer() {
-        watchSyncService.sendMessage(.iOSTimerStarted, "Timer started")
+        watchSyncService?.sendMessage(.iOSTimerStarted, "Timer started")
     }
 
     func stopTimer() {
-        watchSyncService.sendMessage(.iOSTimerStopped, "Timer stopped")
+        watchSyncService?.sendMessage(.iOSTimerStopped, "Timer stopped")
     }
 
     private func stopAudio() {
         let stoppedAudio = audioManager.stopAudio()
         Logger.shared.debug("Stopped audio successfully: \(stoppedAudio)")
+    }
+
+    func connectionAvailable(_ isAvailable: Bool) {
+        DispatchQueue.main.async {
+            self.isConnectionAvailable = isAvailable
+        }
     }
 }
