@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 class ContentViewModel: NSObject, ObservableObject, WatchSyncServiceDelegate {
+    private let userDefaultsKeyStopDateString = "STOP_DATE_STRING"
     private let audioManager = AudioManager()
+    private let userDefaults = UserDefaults.standard
     private var watchSyncService: WatchSyncService?
 
     @Published var isConnectionAvailable: Bool = false
@@ -18,17 +20,21 @@ class ContentViewModel: NSObject, ObservableObject, WatchSyncServiceDelegate {
 
     override init() {
         super.init()
+        stopDateString = userDefaults.string(forKey: userDefaultsKeyStopDateString)
         watchSyncService = WatchSyncService(delegate: self)
         watchSyncService?.dataReceived = { (key, message) in
             DispatchQueue.main.async {
                 switch key {
                 case .watchOSTimerStarted:
                     self.timerStarted = true
+                    self.stopDateString = nil
+                    self.userDefaults.removeObject(forKey: self.userDefaultsKeyStopDateString)
                 case .watchOSTimerStopped:
                     self.timerStarted = false
                 case .watchOSSleepDetected:
                     self.timerStarted = false
                     self.stopDateString = message as? String
+                    self.userDefaults.set(self.stopDateString, forKey: self.userDefaultsKeyStopDateString)
                     self.stopAudio()
                 default:
                     Logger.shared.verbose("Irrelevant key: \(key.rawValue)")
