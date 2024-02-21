@@ -79,8 +79,18 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environmentObject(ContentViewModel())
-        ContentView().environmentObject(ContentViewModel())
-            .preferredColorScheme(.dark)
+        let viewModel = ContentViewModel()
+        viewModel.isConnectionAvailable = true
+        viewModel.stopDateString = "10.12.24 12:24"
+        let runningViewModel = ContentViewModel()
+        runningViewModel.isConnectionAvailable = true
+        runningViewModel.timerStarted = true
+        
+        return Group {
+            ContentView().environmentObject(viewModel)
+            ContentView().environmentObject(viewModel)
+                .preferredColorScheme(.dark)
+            ContentView().environmentObject(runningViewModel)
+        }
     }
 }
