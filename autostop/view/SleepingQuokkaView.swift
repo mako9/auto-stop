@@ -39,7 +39,7 @@ struct SleepingQuokkaAnimationView: View {
                     Image("sleeping_bubble")
                         .resizable()
                         .scaledToFit()
-                        .frame(height: geometry.size.height * 0.35, alignment: .topTrailing)
+                        .frame(width: geometry.size.width * 0.35, height: geometry.size.height * 0.35, alignment: .topTrailing)
                         .opacity(self.isAnimating ? 1 : 0)
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -50,5 +50,14 @@ struct SleepingQuokkaAnimationView: View {
                 self.isAnimating = true
             }
         }
+    }
+}
+
+struct SleepingQuokkaView_Previews: PreviewProvider {
+    static var previews: some View {
+        SleepingQuokkaView(isAnimating: .constant(false))
+        SleepingQuokkaView(isAnimating: .constant(true))
+        SleepingQuokkaView(isAnimating: .constant(true))
+            .frame(height: 50)
     }
 }
