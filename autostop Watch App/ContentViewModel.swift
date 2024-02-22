@@ -42,6 +42,7 @@ class ContentViewModel: NSObject, ObservableObject, WatchSyncServiceDelegate {
             self.checkSleep()
         })
         timerStarted = true
+        healthKitManager.startDate = nil
         watchSyncService?.sendMessage(.watchOSTimerStarted, "Timer started")
     }
 
