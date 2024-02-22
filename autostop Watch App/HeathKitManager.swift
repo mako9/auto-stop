@@ -11,7 +11,7 @@ import HealthKit
 class HealthKitManager {
     private let healthStore = HKHealthStore()
     private let sleepType = HKObjectType.categoryType(forIdentifier: HKCategoryTypeIdentifier.sleepAnalysis)!
-    private var startDate: Date?
+    var startDate: Date?
 
     func isSleeping(completion: @escaping (Bool) -> Void) {
         guard isAuthorized() else {
@@ -46,7 +46,7 @@ class HealthKitManager {
     private func retrieveSleepAnalysis(completion: @escaping (Bool) -> Void) {
         // only consider values with start date after initial start
         if self.startDate == nil { self.startDate = Date() }
-        let predicate = HKQuery.predicateForSamples(withStart: self.startDate ?? Date(), end: nil, options: .strictStartDate)
+        let predicate = HKQuery.predicateForSamples(withStart: startDate ?? nil, end: nil, options: .strictStartDate)
         // use a sortDescriptor to get the recent data first
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
@@ -70,7 +70,7 @@ class HealthKitManager {
             for item in result {
                 if let sample = item as? HKCategorySample {
                     Logger.shared.info("Healthkit sleep: \(sample.startDate) \(sample.endDate) - value: \(sample.value)")
-                    isSleeping = sample.value != HKCategoryValueSleepAnalysis.inBed.rawValue || sample.value != HKCategoryValueSleepAnalysis.awake.rawValue
+                    isSleeping = sample.value != HKCategoryValueSleepAnalysis.inBed.rawValue && sample.value != HKCategoryValueSleepAnalysis.awake.rawValue
                     if isSleeping { break }
                 }
             }
